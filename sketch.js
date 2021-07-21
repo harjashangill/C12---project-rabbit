@@ -1,12 +1,15 @@
 var garden,rabbit;
 var gardenImg,rabbitImg;
 var appleImg
-var score = 0
+var leafsImg
+var leafImg
 
 function preload(){
   gardenImg = loadImage("garden.png");
   rabbitImg = loadImage("rabbit.png");
   appleImg = loadImage("apple.png");
+  leafsImg = loadImage("leaf.png")
+  leafImg = loadImage("orangeLeaf.png")
 }
 
 function setup(){
@@ -29,8 +32,7 @@ rabbit.addImage(rabbitImg);
 function draw() {
   background(0);
   
-  textSize(20);
-  text("Score: "+score,40,25);
+  
 
   edges= createEdgeSprites();
   rabbit.collide(edges);
@@ -60,5 +62,21 @@ if(frameCount % 30 === 0){
   apples.depth = rabbit.depth
   rabbit.depth = rabbit.depth + 1
    }
+if(frameCount % 80 === 0){
+  var leafs = createSprite(random(50,350),70,30,30) 
+  leafs.addImage(leafsImg);
+  leafs.velocityY = 5
+  leafs.scale=0.05
+  leafs.depth = rabbit.depth
+  rabbit.depth = rabbit.depth + 1
+     }
+if(frameCount % 60 === 0){
+  var leaf = createSprite(random(50,350),70,30,30) 
+  leaf.addImage(leafImg);
+  leaf.velocityY = 5
+  leaf.scale=0.05
+  leaf.depth = rabbit.depth
+  rabbit.depth = rabbit.depth + 1
+       }
 
 }
